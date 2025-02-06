@@ -16,6 +16,6 @@ let turfAdminSchema = new Schema({
     active: { type: Number, default: CONSTANT.STATUS.ACTIVE }
 }, options);
 
-const turfAdminModel = model('turfAdmin', turfAdminSchema);
+const TurfAdminModel = model('turfAdmin', turfAdminSchema);
 
-module.exports = turfAdminModel;
+module.exports = TurfAdminModel;
