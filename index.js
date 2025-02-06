@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const color = require('colors');
 const dbConnect = require('./src/connection/dbConnection');
 const AuthRouters = require('./src/controllers/authRouter');
+const CommonRouter = require('./src/controllers/commonRouter');
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,7 @@ app.use(limit);
 app.use(express.json());
 
 app.use('/api/v1/auth', AuthRouters);
+app.use('/api/v1', CommonRouter)
 
 const PORT = process.env.PORT || 9000;
 

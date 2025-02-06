@@ -13,6 +13,7 @@ const turfSchema = new Schema({
     working_slots: Array,
     images: Array,
     rating: Object,
+    price: Object //Per hour
 }, options);
 
 const TurfModel = model('turf', turfSchema);

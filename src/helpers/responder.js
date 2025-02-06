@@ -13,7 +13,7 @@ function Responder() {
 
     this.sendSuccessData = (data, message, res) => {
         res.setHeader('content-type', 'application/json');
-        let result = { success: true, data, message }
+        let result = { success: true, message, data }
         res.end(JSON.stringify(result));
 
     }

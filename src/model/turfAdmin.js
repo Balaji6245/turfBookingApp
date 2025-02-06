@@ -11,7 +11,7 @@ let turfAdminSchema = new Schema({
     email: String,
     phone: Object,
     password: String,
-    location: Array,
+    address: Object,
     image: String,
     active: { type: Number, default: CONSTANT.STATUS.ACTIVE }
 }, options);
