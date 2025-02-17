@@ -1,4 +1,5 @@
 const { Schema, model, default: mongoose } = require('mongoose');
+const CONSTANT = require('../helpers/constant');
 
 let options = {
     timestamps: true,
@@ -13,7 +14,8 @@ const turfSchema = new Schema({
     working_slots: Array,
     images: Array,
     rating: Object,
-    price: Object //Per hour
+    price: Object, //Per hour
+    active: { type: Number, default: CONSTANT.STATUS.ACTIVE }
 }, options);
 
 const TurfModel = model('turf', turfSchema);

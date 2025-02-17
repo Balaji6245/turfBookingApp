@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto')
+const crypto = require('crypto');
+const { default: mongoose } = require('mongoose');
 
 function Utils() {
 
@@ -27,6 +28,40 @@ function Utils() {
         if (decode)
             return decode?.id
         else return null
+    }
+
+    this.returnObjectId = (id) => {
+        return new mongoose.Types.ObjectId(id)
+    }
+
+    this.lookupStage = (from, local, foreign, as, project) => {
+        return {
+            $lookup: {
+                from: from,
+                localField: local,
+                foreignField: foreign,
+                pipeline: [{
+                    $project: project
+                }],
+                as: as
+            }
+        }
+    }
+
+    this.unwindStage = (path) => {
+        return {
+            $unwind: {
+                path: path,
+                preserveNullAndEmptyArrays: true
+            }
+        }
+    }
+
+    this.returnPageLimit = (query) => {
+        let page = parseInt(query?.page ?? 1) - 1;
+        let limit = parseInt(query?.limit ?? 10)
+
+        return { page, limit }
     }
 }
 

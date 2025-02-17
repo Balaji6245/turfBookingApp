@@ -9,7 +9,7 @@ function Controller() {
         let data = req?.body;
 
         if (!data?.name || !data?.email || !data?.password)
-            return Responder.sendFailureMessage(CommonMsg.vaildField, res);
+            return Responder.sendFailureMessage(CommonMsg.validField, res);
 
         let user = await TurfAdminModel.findOne({ email: data?.email, active: CONSTANT.STATUS.ACTIVE });
         if (user) return Responder.sendFailureMessage(CommonMsg.emailExsist, res);
@@ -27,7 +27,7 @@ function Controller() {
         let data = req?.body;
 
         if (!data?.email || !data?.password)
-            return Responder.sendFailureMessage(CommonMsg.vaildField, res);
+            return Responder.sendFailureMessage(CommonMsg.validField, res);
 
         let user = await TurfAdminModel.findOne({ email: data?.email, active: CONSTANT.STATUS.ACTIVE });
         if (!user) return Responder.sendFailureMessage(CommonMsg.emailNotExsist, res);
@@ -50,7 +50,7 @@ function Controller() {
         let data = req?.body;
 
         if (!data?.email || !data?.new_password)
-            return Responder.sendFailureMessage(CommonMsg.vaildField, res);
+            return Responder.sendFailureMessage(CommonMsg.validField, res);
 
         let user = await TurfAdminModel.findOne({ email: data?.email, active: CONSTANT.STATUS.ACTIVE });
         if (!user) return Responder.sendFailureMessage(CommonMsg.emailNotExsist, res);
