@@ -48,6 +48,22 @@ function Controller() {
         if (user) Responder.sendSuccessMessage(UserMsg.deactivate, res);
         else Responder.sendFailureMessage(UserMsg.deactivate404, res);
     }
+
+    this.nearByTurfList = async (req, res) => {
+        let query = req?.query;
+
+        let token = Utils.getToken(req);
+        if (!token) return Responder.sendFailureMessage(CommonMsg.unauthorized, res);
+
+        let userId = await Utils.verifyToken(token);
+        if (!userId) return Responder.sendFailureMessage(CommonMsg.unauthorized, res);
+
+        let user = await UserModel.findOne({ _id: id, active: CONSTANT.STATUS.ACTIVE });
+        if (!user) return Responder.sendFailureMessage(UserMsg.user404, res);
+
+        // if(query?.name)
+
+    }
 }
 
 module.exports = new Controller();

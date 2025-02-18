@@ -90,6 +90,9 @@ function Controller() {
             owner: Utils.returnObjectId(userId), active: CONSTANT.STATUS.ACTIVE
         }
 
+        if (query?.name)
+            turfQuery['name'] = { $regex: new RegExp(query?.name, 'i') }
+
         let turfAggregate = [
             {
                 $match: turfQuery
